@@ -6,13 +6,8 @@
  */
 
 import React from "react"
-import { Helmet } from "react-helmet"
+import { Helmet, HelmetProps,  } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-
-type MetaItem = {
-  name: string
-  content: string
-}
 
 type SEOProps = {
   title?: string
@@ -25,7 +20,7 @@ type SEOProps = {
   image?: string
 }
 
-function SEO({ description, lang, meta, title }: SEOProps) {
+const SEO: React.FC<any> = ({ description, lang, meta, title }) => {
   const { site } = useStaticQuery(
     graphql`
       query {

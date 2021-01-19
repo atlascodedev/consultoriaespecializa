@@ -13,7 +13,7 @@ import Header from "./header"
 import "./layout.css"
 
 interface LayoutProps {
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const Layout = ({ children }: LayoutProps) => {
@@ -28,7 +28,7 @@ const Layout = ({ children }: LayoutProps) => {
   `)
 
   return (
-    <>
+    <div>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
@@ -48,7 +48,7 @@ const Layout = ({ children }: LayoutProps) => {
           <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer>
       </div>
-    </>
+    </div>
   )
 }
 
