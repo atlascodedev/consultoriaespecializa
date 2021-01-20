@@ -70,6 +70,7 @@
     "./config/**",
     "./src/cms/cms.js",
     "./public/**",
-    "./src/helper/**"
+    "./src/helper/**",
+    "./src/helper/converToSlug.js"
   ]
 }
