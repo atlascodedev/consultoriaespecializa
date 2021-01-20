@@ -1,4 +1,7 @@
 import React from "react"
+import AboutUs from "../components/AppComponents/AboutUs"
+import DefenseSection from "../components/AppComponents/DefenseSection"
+import LandingHero from "../components/AppComponents/LandingHero"
 
 import AppLayout from "../layout/AppLayout"
 
@@ -40,14 +43,19 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
 
   return (
     <AppLayout menu={menu}>
-      <div ref={landingRef}>think of the children</div>
+      <div ref={landingRef}>
+        <LandingHero ctaRef={landingRef} />
+      </div>
 
-      <div ref={anotherRef}>div additional</div>
+      <div ref={anotherRef}>
+        <DefenseSection />
+      </div>
 
-      <div ref={againRef}>another div</div>
+      <div ref={againRef}>
+        <AboutUs />
+      </div>
 
       <div ref={andAgainRef}>and once again</div>
-      <div style={{ height: "100vh" }}></div>
     </AppLayout>
   )
 }

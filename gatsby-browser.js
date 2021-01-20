@@ -4,7 +4,7 @@ import { theme } from "./src/theme"
 
 // Import fonts and CSS that should be seen globally to avoid SSR bugs
 import "@fontsource/barlow"
-
+import "@fontsource/suez-one"
 // For some reason unknown to me you need to use CommonJS syntax to import some css from certain npm packages
 
 // Uncomment following lines if you're using Swiper.js
@@ -21,10 +21,10 @@ import "@fontsource/barlow"
 
 const App = ({ root }) => {
   return (
-    <div>
+    <React.Fragment>
       <CssBaseline />
       <MuiThemeProvider theme={theme}>{root}</MuiThemeProvider>
-    </div>
+    </React.Fragment>
   )
 }
 

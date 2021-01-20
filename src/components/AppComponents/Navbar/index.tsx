@@ -79,6 +79,11 @@ const AtlasAppBarHeightFix = styled.div<AtlasBarBaseProp>`
   width: 100%;
   z-index: 9999;
   display: ${props => (props.top ? "hidden" : "block")};
+  display: block;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
 `
 
 const AtlasAppBarItemContainer = styled.div`
@@ -94,7 +99,9 @@ const AtlasAppBarItemList = styled.ul<AtlasNavbarListProp>`
   flex-direction: row;
   margin: 0;
   width: 100%;
-  color: #222;
+  color: ${props => (props.top ? "#fff" : "#222")};
+  -webkit-text-stroke: 0.1px black;
+  text-rendering: optimizeLegibility;
   padding: 0;
   transition: all 0.5s ease-in-out;
   padding-right: ${props => (props.top ? "10em" : "0px")};
