@@ -2,6 +2,7 @@ import React from "react"
 import AboutUs from "../components/AppComponents/AboutUs"
 import DefenseSection from "../components/AppComponents/DefenseSection"
 import LandingHero from "../components/AppComponents/LandingHero"
+import ServiceSection from "../components/AppComponents/ServiceSection"
 
 import AppLayout from "../layout/AppLayout"
 
@@ -55,7 +56,9 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
         <AboutUs />
       </div>
 
-      <div ref={andAgainRef}>and once again</div>
+      <div ref={andAgainRef}>
+        <ServiceSection />
+      </div>
     </AppLayout>
   )
 }

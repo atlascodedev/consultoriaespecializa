@@ -20,7 +20,7 @@ const DefenseSectionTitle = styled("h2")`
   margin-top: 10vh;
   color: #333;
   text-rendering: optimizeLegibility;
-  font-size: 35px;
+  font-size: 30px;
 `
 
 const DefenseSectionContainer = styled("div")`
