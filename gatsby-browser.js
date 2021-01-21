@@ -44,3 +44,7 @@ export const wrapRootElement = ({ element }) => <App root={element} />
 //     }, 500)
 //   }, 2000)
 // }
+
+export const onInitialClientRender = () => {
+  document.body.style.backgroundColor = "#FFF"
+}

@@ -2,6 +2,8 @@ import React from "react"
 import DefenseCard from "../DefenseCard"
 import styled from "styled-components"
 import { Check, CreditCard, Facebook } from "@material-ui/icons"
+import { Fade, Slide, useMediaQuery } from "@material-ui/core"
+import { Waypoint } from "react-waypoint"
 
 const DefenseSectionRoot = styled("div")`
   display: flex;
@@ -10,6 +12,7 @@ const DefenseSectionRoot = styled("div")`
   justify-content: center;
   height: 100%;
   text-align: center;
+  overflow: hidden;
 `
 
 const DefenseSectionTitle = styled("h2")`
@@ -38,29 +41,64 @@ const DefenseSectionContainer = styled("div")`
 interface Props {}
 
 const DefenseSection = (props: Props) => {
+  const [defenseAnimation, setDefenseAnimation] = React.useState<boolean>(false)
+  const isBigDevice = useMediaQuery("(min-width: 1024px)")
+
+  const deviceSize = isBigDevice ? 400 : 400
+
   return (
-    <DefenseSectionRoot>
-      <DefenseSectionTitle>
-        Por que escolher a <span>Consultoria Especializa</span>?
-      </DefenseSectionTitle>
-      <DefenseSectionContainer>
-        <DefenseCard
-          icon={CreditCard}
-          text={"Text through prop"}
-          title={"Preço"}
-        />
-        <DefenseCard
-          icon={Check}
-          text={"Placeholder it just feels right"}
-          title={"Right choice"}
-        />
-        <DefenseCard
-          icon={Facebook}
-          text="Tuts tuts placeholder"
-          title="Social"
-        />
-      </DefenseSectionContainer>
-    </DefenseSectionRoot>
+    <div>
+      <Waypoint
+        bottomOffset={deviceSize}
+        onEnter={() => setDefenseAnimation(true)}
+      />
+      <DefenseSectionRoot>
+        <DefenseSectionTitle>
+          Por que escolher a <span>Consultoria Especializa</span>?
+        </DefenseSectionTitle>
+        <DefenseSectionContainer>
+          <Slide
+            in={defenseAnimation}
+            direction={isBigDevice ? "up" : "left"}
+            timeout={{ enter: 750 }}
+          >
+            <div>
+              <DefenseCard
+                icon={CreditCard}
+                text={"Text through prop"}
+                title={"Preço"}
+              />
+            </div>
+          </Slide>
+          <Slide
+            in={defenseAnimation}
+            direction={isBigDevice ? "up" : "left"}
+            timeout={{ enter: 950 }}
+          >
+            <div>
+              <DefenseCard
+                icon={CreditCard}
+                text={"Text through prop"}
+                title={"Preço"}
+              />
+            </div>
+          </Slide>
+          <Slide
+            in={defenseAnimation}
+            direction={isBigDevice ? "up" : "left"}
+            timeout={{ enter: 1150 }}
+          >
+            <div>
+              <DefenseCard
+                icon={CreditCard}
+                text={"Text through prop"}
+                title={"Preço"}
+              />
+            </div>
+          </Slide>
+        </DefenseSectionContainer>
+      </DefenseSectionRoot>
+    </div>
   )
 }
 
