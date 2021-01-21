@@ -16,10 +16,8 @@ const MainFooter = styled.div`
 const Footer: React.FC = () => {
   return (
     <MainFooter>
-      {
-        " © 2020 - Todos Direitos Reservados Atlas Code - Desenvolvimento web &\
-      estratégia"
-      }
+      {` © ${new Date().getFullYear()} - Todos Direitos Reservados Atlas Code - Desenvolvimento web &\
+      estratégia`}
     </MainFooter>
   )
 }

@@ -7,6 +7,8 @@ type Props = {}
 
 const ServiceSectionRoot = styled("div")`
   background-color: #f3f3f3;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
 
   @media (min-width: 1024px) {
     padding-top: 10vh;

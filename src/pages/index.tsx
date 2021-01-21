@@ -3,6 +3,8 @@ import AboutUs from "../components/AppComponents/AboutUs"
 import DefenseSection from "../components/AppComponents/DefenseSection"
 import LandingHero from "../components/AppComponents/LandingHero"
 import ServiceSection from "../components/AppComponents/ServiceSection"
+import TestimonialsSection from "../components/AppComponents/Testimonials"
+import ContactSection from "../components/AppComponents/ContactSection"
 
 import AppLayout from "../layout/AppLayout"
 
@@ -21,6 +23,8 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
   const anotherRef = React.useRef<HTMLDivElement | null>(null)
   const againRef = React.useRef<HTMLDivElement | null>(null)
   const andAgainRef = React.useRef<HTMLDivElement | null>(null)
+  const testimonialsRef = React.useRef<HTMLDivElement | null>(null)
+  const contactRef = React.useRef<HTMLDivElement | null>(null)
 
   let menu: Array<MenuItem> = [
     {
@@ -40,6 +44,15 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       menuName: "andAgain",
       reference: andAgainRef,
     },
+    {
+      menuName: "testimonials",
+      reference: testimonialsRef,
+    },
+
+    {
+      menuName: "Contato",
+      reference: contactRef,
+    },
   ]
 
   return (
@@ -58,6 +71,14 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
 
       <div ref={andAgainRef}>
         <ServiceSection />
+      </div>
+
+      <div ref={testimonialsRef}>
+        <TestimonialsSection />
+      </div>
+
+      <div ref={contactRef}>
+        <ContactSection />
       </div>
     </AppLayout>
   )

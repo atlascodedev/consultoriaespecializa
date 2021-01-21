@@ -9,7 +9,7 @@ import SwiperCore, {
 } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "./slider.css"
-import ServiceCard from "../ServiceCard"
+import TestimonialCard from "../TestimonialCard"
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
@@ -18,20 +18,20 @@ interface CardActiveProps {
 }
 
 const CardActiveContainer = styled("div")<CardActiveProps>`
-  opacity: ${props => (props.active ? "1" : "0.6")};
-  scale: ${props => (props.active ? "1" : "0.75")};
+  opacity: ${props => (props.active ? "1" : "0.2")};
+  /* scale: ${props => (props.active ? "1" : "0.75")}; */
   transition: all 0.8s ease;
   will-change: scale;
 `
 
 type Props = {}
 
-const ServiceSlider = ({}: Props) => {
+const TestimonialSlider = ({}: Props) => {
   return (
     <div>
       <Swiper
         centeredSlides
-        id="swiper-1"
+        id="swiper-2"
         slidesPerView={1}
         pagination={{ clickable: true }}
         autoplay={true}
@@ -48,49 +48,49 @@ const ServiceSlider = ({}: Props) => {
         <SwiperSlide>
           {({ isActive }: any | boolean) => (
             <CardActiveContainer active={isActive}>
-              <ServiceCard />
+              <TestimonialCard />
             </CardActiveContainer>
           )}
         </SwiperSlide>
         <SwiperSlide>
           {({ isActive }: any | boolean) => (
             <CardActiveContainer active={isActive}>
-              <ServiceCard />
+              <TestimonialCard />
             </CardActiveContainer>
           )}
         </SwiperSlide>
         <SwiperSlide>
           {({ isActive }: any | boolean) => (
             <CardActiveContainer active={isActive}>
-              <ServiceCard />
+              <TestimonialCard />
             </CardActiveContainer>
           )}
         </SwiperSlide>
         <SwiperSlide>
           {({ isActive }: any | boolean) => (
             <CardActiveContainer active={isActive}>
-              <ServiceCard />
+              <TestimonialCard />
             </CardActiveContainer>
           )}
         </SwiperSlide>
         <SwiperSlide>
           {({ isActive }: any | boolean) => (
             <CardActiveContainer active={isActive}>
-              <ServiceCard />
+              <TestimonialCard />
             </CardActiveContainer>
           )}
         </SwiperSlide>
         <SwiperSlide>
           {({ isActive }: any | boolean) => (
             <CardActiveContainer active={isActive}>
-              <ServiceCard />
+              <TestimonialCard />
             </CardActiveContainer>
           )}
         </SwiperSlide>
         <SwiperSlide>
           {({ isActive }: any | boolean) => (
             <CardActiveContainer active={isActive}>
-              <ServiceCard />
+              <TestimonialCard />
             </CardActiveContainer>
           )}
         </SwiperSlide>
@@ -99,4 +99,4 @@ const ServiceSlider = ({}: Props) => {
   )
 }
 
-export default ServiceSlider
+export default TestimonialSlider

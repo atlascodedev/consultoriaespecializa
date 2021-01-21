@@ -15,6 +15,15 @@ exports.createSchemaCustomization = ({ actions }) => {
         description: String
         body: String
         markdown: String
+        phoneOne: String
+        phoneTwo: String
+        mailOne: String
+        mailTwo: String
+        instagramUrl: String
+        facebookUrl: String
+        whatsAppNum: String
+        whatsAppMessage: String
+        address: String
     }
   
   `
