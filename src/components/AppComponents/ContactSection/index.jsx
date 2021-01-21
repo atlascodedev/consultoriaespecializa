@@ -220,15 +220,12 @@ function ContactSection(props) {
               )
 
               axios
-                .post(
-                  "https://us-central1-coletivoprocidadania-a52de.cloudfunctions.net/api/sendMail",
-                  {
-                    name: values.name,
-                    email: values.email,
-                    message: values.message,
-                    phone: values.phone,
-                  }
-                )
+                .post("/sendMail", {
+                  name: values.name,
+                  email: values.email,
+                  message: values.message,
+                  phone: values.phone,
+                })
                 .then(result => {
                   actions.setSubmitting(false)
                   actions.resetForm()
