@@ -16,7 +16,7 @@ jobs:
         run: npm ci && npm run build
       
       - name: Deploy
-        run: netlify deploy --prod --dir public --message "Site deployed from Githubactions ${{github.ref}}" --auth ${{ NETLIFY_AUTH_TOKEN }}  --site ${{ NETLIFY_APP_ID }}
+        run: netlify deploy --prod --dir public --message "Site deployed from Githubactions ${{github.ref}}" --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}  --site ${{ secrets.NETLIFY_APP_ID }}
       
       - name: Finish
         run: echo 'it just works'
