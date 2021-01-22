@@ -1,4 +1,4 @@
-name: Deploy to Firebase Hosting on merge
+name: Deploy to Netlify using Github Actions
 "on":
   push:
     branches:
@@ -7,15 +7,16 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-       #- name: Build
-       # working-directory: ./
-       # run: npm ci && npm run build
-      - uses: jsmrcaga/action-netlify-deploy@master
-        with:
-          build_directory: 'public'
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_APP_ID }}
-          NETLIFY_DEPLOY_MESSAGE: "Production deploy v${{github.ref}}"
-          NETLIFY_DEPLOY_TO_PROD: true
+      - name: Install Netlify CLI 
+        run: npm install netlify-cli -g
         
+      - uses: actions/checkout@v2
+      - name: Build
+        working-directory: ./
+        run: npm ci && npm run build
+      
+      - name: Deploy
+        run: netlify deploy --prod --dir public --message "Site deployed from Githubactions ${{gitbub.ref}}" -auth ${{ NETLIFY_AUTH_TOKEN }}  --site ${{ NETLIFY_APP_ID }}
+      
+      - name: Finish
+        run: echo 'it just works'
