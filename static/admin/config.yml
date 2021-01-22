@@ -1,6 +1,6 @@
 backend:
-  name: github
-  repo: oparin10/atlas-gatsby-starter
+  name: git-gateway
+  # repo: oparin10/atlas-gatsby-starter
   branch: main
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
