@@ -6,6 +6,7 @@ name: Deploy to Netlify using Github Actions
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
     steps:
       - name: Install Netlify CLI 
         run: npm install netlify-cli
