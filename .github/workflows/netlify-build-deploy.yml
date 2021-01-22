@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Netlify CLI 
-        run: npm install netlify-cli -g
+        run: npm install netlify-cli
         
       - uses: actions/checkout@v2
       - name: Build
