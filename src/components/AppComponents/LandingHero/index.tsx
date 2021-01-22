@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { Button } from "@material-ui/core"
+import { Box, Button } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import bgImage from "../../../images/hero-img.jpg"
+import scrollIntoViewHelper from "../../../helper/scrollIntoViewType"
 
 type LandingBackgroundHeroProps = {
   image: string | null
@@ -143,9 +144,10 @@ const HeroTextMainText = styled.div`
 
 type LandingHeroProps = {
   ctaRef: React.RefObject<HTMLElement>
+  secondaryCta?: React.RefObject<HTMLElement>
 }
 
-const LandingHero: React.FC<LandingHeroProps> = ({ ctaRef }) => {
+const LandingHero: React.FC<LandingHeroProps> = ({ ctaRef, secondaryCta }) => {
   const heroImgWebp = useStaticQuery(graphql`
     {
       file(relativePath: { eq: "hero-img.jpg" }) {
@@ -182,16 +184,15 @@ const LandingHero: React.FC<LandingHeroProps> = ({ ctaRef }) => {
               <HeroTextMainText>
                 <div>
                   <h1>
-                    Transformando a sociedade através da{" "}
-                    <span>cidadania cultural</span>{" "}
+                    Slogan da sua <span>empresa</span>{" "}
                   </h1>
                 </div>
 
                 <div className={"secondaryText"}>
                   <p>
-                    Temos como princípio a prática de políticas inclusivas, além
-                    de desenvolver ações para fortalecer os grupos mais expostos
-                    da sociedade
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quasi vero dolorum, accusantium adipisci dolorem nihil
+                    sequi! Eos nostrum obcaecati quisquam?
                   </p>
                 </div>
 
@@ -203,6 +204,18 @@ const LandingHero: React.FC<LandingHeroProps> = ({ ctaRef }) => {
                   >
                     Fale conosco
                   </Button>
+
+                  <Box color="white" px={2}>
+                    <Button
+                      color="inherit"
+                      variant="outlined"
+                      onClick={() =>
+                        scrollIntoViewHelper(secondaryCta, "Soluções")
+                      }
+                    >
+                      Confira nossas soluções
+                    </Button>
+                  </Box>
                 </div>
               </HeroTextMainText>
             </LandingHeroTextInnerContainer>

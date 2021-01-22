@@ -20,10 +20,7 @@ interface IndexProps {
 
 const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
   const landingRef = React.useRef<HTMLDivElement | null>(null!)
-  const anotherRef = React.useRef<HTMLDivElement | null>(null)
-  const againRef = React.useRef<HTMLDivElement | null>(null)
-  const andAgainRef = React.useRef<HTMLDivElement | null>(null)
-  const testimonialsRef = React.useRef<HTMLDivElement | null>(null)
+  const serviceRef = React.useRef<HTMLDivElement | null>(null)
   const contactRef = React.useRef<HTMLDivElement | null>(null)
 
   let menu: Array<MenuItem> = [
@@ -31,22 +28,10 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       menuName: "Home",
       reference: landingRef,
     },
-    {
-      menuName: "Another",
-      reference: anotherRef,
-    },
-    {
-      menuName: "Again",
-      reference: againRef,
-    },
 
     {
-      menuName: "andAgain",
-      reference: andAgainRef,
-    },
-    {
-      menuName: "testimonials",
-      reference: testimonialsRef,
+      menuName: "Soluções",
+      reference: serviceRef,
     },
 
     {
@@ -58,22 +43,22 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
   return (
     <AppLayout menu={menu}>
       <div ref={landingRef}>
-        <LandingHero ctaRef={landingRef} />
+        <LandingHero ctaRef={contactRef} secondaryCta={serviceRef} />
       </div>
 
-      <div ref={anotherRef}>
+      <div>
         <DefenseSection />
       </div>
 
-      <div ref={againRef}>
+      <div>
         <AboutUs />
       </div>
 
-      <div ref={andAgainRef}>
+      <div ref={serviceRef}>
         <ServiceSection />
       </div>
 
-      <div ref={testimonialsRef}>
+      <div>
         <TestimonialsSection />
       </div>
 

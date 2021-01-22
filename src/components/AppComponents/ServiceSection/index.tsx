@@ -26,7 +26,9 @@ const ServiceSectionTitle = styled("div")`
 const ServiceSection = ({}: Props) => {
   return (
     <ServiceSectionRoot>
-      <ServiceSectionTitle>Conheça nossos serviços</ServiceSectionTitle>
+      <ServiceSectionTitle>
+        Conheça nossas soluções para sua instituição
+      </ServiceSectionTitle>
 
       <ServiceSlider />
     </ServiceSectionRoot>
