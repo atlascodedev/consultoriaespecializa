@@ -3,15 +3,15 @@ backend:
   # repo: oparin10/atlas-gatsby-starter \
   branch: main
   commit_messages:
-    create: "Create {{collection}} “{{slug}}”"
-    update: "Update {{collection}} “{{slug}}”"
-    delete: "Delete {{collection}} “{{slug}}”"
+    create: "Create {{collection}} “{{slug}}” [skip ci]"
+    update: "Update {{collection}} “{{slug}} [skip ci]”"
+    delete: "Delete {{collection}} “{{slug}} [skip ci]”"
     uploadMedia: "[skip ci] Upload “{{path}}”"
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
 media_folder: static/img
 public_folder: /img
-locale: en
+locale: pt
 display_url: "https://atlascode.dev"
 site_url: "https://atlascode.dev"
 logo_url: https://i.imgur.com/gY3CoNL.png
@@ -19,10 +19,10 @@ slug:
   clean_accents: true
 
 collections:
-  - name: "posts"
+  - name: "services"
     editor:
       preview: false
-    label: "Post"
+    label: "Soluções"
     folder: "src/blog/posts"
     create: true
     slug: "{{slug}}"
@@ -31,15 +31,38 @@ collections:
           label: "Content Type",
           name: "contentType",
           widget: "hidden",
-          default: "blogPost",
+          default: "servicePost",
         }
       - {
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "post",
+          default: "Post",
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "featuredImage", widget: "image" }
-      - { label: "Post", name: "body", widget: "markdown" }
+      - { label: "Nome da solução", name: "title", widget: "string" }
+      - { label: "Imagem principal", name: "featuredImage", widget: "image" }
+      - {
+          label: "Resumo (texto curto que aparecerá na página principal",
+          name: "summary",
+          widget: "text",
+        }
+      - {
+          label: "Descrição (texto para a página do serviço específico)",
+          name: "body",
+          widget: "markdown",
+        }
+      - {
+          label: "Lista de serviços oferecidos na solução",
+          widget: "list",
+          name: "benefits",
+          allow_add: true,
+          fields:
+            [
+              { label: Nome do benefício, name: benefitName, widget: string },
+              {
+                label: Descrição do benefício,
+                name: benefitDescription,
+                widget: text,
+              },
+            ],
+        }
