@@ -4,9 +4,17 @@ name: Deploy to Netlify using Github Actions
     branches:
       - main
 jobs:
+  deploy_only:
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '[skip build]')"
+    steps:
+      - name: Say Hello
+        run: echo "Hello Workflow test"
+    
+  
   build_and_deploy:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    if: "!contains(github.event.head_commit.message, '[skip ci]') || !contains(github.event.head_commit.message, '[skip build]')"
     steps:
       - name: Install Netlify CLI 
         run: npm install netlify-cli
