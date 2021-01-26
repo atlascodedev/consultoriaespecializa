@@ -69,6 +69,7 @@
     "./src/html.js",
     "./config/**",
     "./src/cms/cms.js",
-    "./public/**"
+    "./public/**",
+    "./nodeHelper/**"
   ]
 }

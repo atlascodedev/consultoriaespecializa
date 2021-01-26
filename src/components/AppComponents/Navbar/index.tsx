@@ -158,7 +158,7 @@ const useStyles = makeStyles(theme => ({
 const Navbar: React.FC<NavbarMainProps> = ({
   minHeight,
   height,
-  logo,
+  logo = "https://via.placeholder.com/150",
   menu,
 }) => {
   const [isTop, setIsTop] = React.useState(true)

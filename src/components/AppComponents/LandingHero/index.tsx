@@ -1,228 +1,235 @@
 import React from "react"
 import styled from "styled-components"
-import { Box, Button } from "@material-ui/core"
-import { graphql, useStaticQuery } from "gatsby"
-import GatsbyImage from "gatsby-image"
-import bgImage from "../../../images/hero-img.jpg"
-import scrollIntoViewHelper from "../../../helper/scrollIntoViewType"
+import scrollHelper from "../../../helper/scrollIntoViewType"
+import background from "../../../images/main-bg.svg"
+import waves from "../../../images/waves.svg"
+import heroImage from "../../../images/cropped-img.png"
+import { Box, Button, Slide, useMediaQuery } from "@material-ui/core"
 
-type LandingBackgroundHeroProps = {
-  image: string | null
-}
-
-const LandingBackgroundHero = styled.div<LandingBackgroundHeroProps>`
-  position: relative;
-  z-index: 1;
-  background-image: ${props => `url(${props.image})`};
+const HeroBackGroundDesktop = styled("div")`
+  height: 100vh;
+  width: 100%;
+  background-image: url(${background});
   background-size: cover;
-  background-position: center top;
+  background-position: center center;
   background-repeat: no-repeat;
-  height: calc(70vh - 90px);
-  width: 100%;
-
-  @media (min-width: 1024px) {
-    height: calc(110vh - 90px);
-    display: flex;
-  }
-`
-
-const LandingHeroGridContainer = styled.div`
-  display: grid;
-  grid-template-rows: 1fr;
-  height: 100%;
-  place-items: center;
-  font-family: "Barlow";
-  @media (min-width: 1024px) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: none;
-  }
-`
-
-const LandingHeroImageContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (min-width: 1024px) {
-    order: 1;
-  }
-`
-
-const LandingHeroImage: any = styled(GatsbyImage)`
-  width: 85%;
-  height: 85%;
-
-  @media (min-width: 768px) {
-    margin-top: 2em;
-    width: 85%;
-    height: 85%;
-  }
-
-  @media (min-width: 1024px) {
-    /* height: 100%; */
-    /* width: 100%; */
-  }
-`
-
-const LandingHeroTextContainer = styled.div`
-  display: flex;
-  justify-content: center;
-
-  @media (min-width: 1024px) {
-    justify-content: flex-start;
-    align-items: center;
-    margin-left: 2em;
-    margin-top: 0em;
-  }
-`
-
-const LandingHeroTextInnerContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-
-  @media (min-width: 1024px) {
-    justify-content: center;
-    width: 100%;
-  }
-`
-
-const HeroTextMainText = styled.div`
-  font-weight: 700;
-  color: #2a2a2a;
-  width: 100%;
+  position: relative;
   font-family: "Suez One";
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+`
+
+const HeroBackGroundMobile = styled.div`
+  height: 65vh;
+  width: 100%;
+  background-image: url(${background});
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  font-family: "Suez One";
+  display: block;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+`
+
+const HeroBackgroundWaves = styled.img`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+`
+
+const HeroBackgroundImageContainer = styled.div`
+  height: 900px;
+  display: none;
+  width: auto;
+  position: absolute;
+  bottom: 1%;
+  right: 10%;
+  z-index: 1;
+  overflow: hidden;
+  transform: rotateY(180deg);
+
+  @media (min-width: 1024px) {
+    height: 625px;
+    display: block;
+  }
+
+  @media (min-width: 1600px) {
+    height: 750px;
+  }
+`
+
+const HeroBackgroundImage = styled.img`
+  height: 100%;
+  width: 100%;
+`
+
+const HeroTextContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    padding-left: 24px;
+  }
+`
+
+const HeroHeader = styled.div`
+  color: #3b4043;
+  @media (min-width: 1024px) {
+    font-size: 40px;
+  }
+
+  @media (min-width: 1600px) {
+    font-size: 50px;
+  }
+`
+
+const HeroText = styled.div`
+  color: #fff;
+
+  & > span {
+    color: #29378e;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 1600px) {
+    font-size: 34px;
+  }
+`
+
+const HeroMobileInnerContainer = styled.div`
+  height: 100%;
+  display: grid;
+  grid-template-rows: 20% 40% 40%;
+  font-family: "Suez One";
+  place-items: center;
+`
+
+const HeroMobileHeaderText = styled.div`
+  color: #3b4043;
+  font-size: 26px;
+`
+
+const HeroMobileText = styled.div`
+  color: #fff;
+  font-size: 18px;
+  width: 90%;
+  & > span {
+    color: #29378e;
+  }
+`
+
+const HeroMobileButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: 15px;
-  font-size: 10px;
-
-  & > div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 80%;
-    margin-left: 0px;
-    & > h1 {
-      margin: 0;
-      & > span {
-        color: #2a2a2a;
-      }
-    }
-  }
-
-  & .secondaryText {
-    > p {
-      font-weight: 400;
-      color: #1f1f1f;
-      width: 65%;
-    }
-  }
-
-  & .ctaButton {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-  }
-
-  @media (min-width: 768px) {
-    & > div {
-      font-size: 20px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    & > div {
-      font-size: 22px;
-      line-height: 1.2;
-    }
-  }
+  align-items: center;
 `
 
-type LandingHeroProps = {
-  ctaRef: React.RefObject<HTMLElement>
-  secondaryCta?: React.RefObject<HTMLElement>
+type Props = {
+  ctaRef: React.RefObject<HTMLElement> | null
+  ctaRefSecond: React.RefObject<HTMLElement> | null
 }
 
-const LandingHero: React.FC<LandingHeroProps> = ({ ctaRef, secondaryCta }) => {
-  const heroImgWebp = useStaticQuery(graphql`
-    {
-      file(relativePath: { eq: "hero-img.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
-  const [cta, setCta] = React.useState<HTMLElement | null>(null)
-
-  React.useEffect(() => {
-    if (ctaRef) {
-      setCta(ctaRef.current)
-    }
-  }, [])
+const LandingHero = ({ ctaRef = null, ctaRefSecond = null }: Props) => {
+  const bigDevice = useMediaQuery("@media(min-width: 1024px)")
 
   return (
-    <div>
-      <LandingBackgroundHero image={bgImage}>
-        <LandingHeroGridContainer>
-          {/* <LandingHeroImageContainer>
-            <LandingHeroImage
-              imgStyle={{ objectFit: "cover" }}
-              fluid={heroImgWebp.file.childImageSharp.fluid}
-            />
-          </LandingHeroImageContainer> */}
+    <React.Fragment>
+      {bigDevice ? (
+        <HeroBackGroundDesktop>
+          <HeroTextContainer>
+            <HeroHeader>Consultoria educacional</HeroHeader>
+            <HeroText>
+              Terceirização de serviços acadêmicos, pedagógicos e de secretaria.
+              Conte com a <span>Consultoria Especializa</span> para garantir a
+              qualidade de sua instituição e destaque-se no mercado.
+            </HeroText>
 
-          <LandingHeroTextContainer>
-            <LandingHeroTextInnerContainer>
-              <HeroTextMainText>
-                <div>
-                  <h1>
-                    Slogan da sua <span>empresa</span>{" "}
-                  </h1>
-                </div>
+            <Box
+              width="100%"
+              pt={3}
+              display="flex"
+              justifyContent="space-around"
+            >
+              <Box color="#fff">
+                <Button
+                  onClick={() => scrollHelper(ctaRef, "contato")}
+                  variant="contained"
+                  color="inherit"
+                  style={{ backgroundColor: "#29378E" }}
+                >
+                  Fale conosco
+                </Button>
+              </Box>
 
-                <div className={"secondaryText"}>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quasi vero dolorum, accusantium adipisci dolorem nihil
-                    sequi! Eos nostrum obcaecati quisquam?
-                  </p>
-                </div>
+              <Box color="#fff">
+                <Button
+                  onClick={() => scrollHelper(ctaRefSecond, "servicos")}
+                  variant="outlined"
+                  color="inherit"
+                >
+                  Conheça nossas soluções
+                </Button>
+              </Box>
+            </Box>
+          </HeroTextContainer>
 
-                <div className={"ctaButton"}>
-                  <Button
-                    onClick={() => cta!.scrollIntoView({ behavior: "smooth" })}
-                    variant="contained"
-                    color="secondary"
-                  >
-                    Fale conosco
-                  </Button>
+          <HeroBackgroundWaves src={waves} />
+          <HeroBackgroundImageContainer>
+            <HeroBackgroundImage src={heroImage} />
+          </HeroBackgroundImageContainer>
+        </HeroBackGroundDesktop>
+      ) : (
+        <HeroBackGroundMobile>
+          <HeroMobileInnerContainer>
+            <HeroMobileHeaderText>Consultoria educacional</HeroMobileHeaderText>
+            <HeroMobileText>
+              Terceirização de serviços acadêmicos, pedagógicos e de secretaria.
+              Conte com a <span>Consultoria Especializa</span> para garantir a
+              qualidade de sua instituição e destaque-se no mercado.
+            </HeroMobileText>
 
-                  <Box color="white" px={2}>
-                    <Button
-                      color="inherit"
-                      variant="outlined"
-                      onClick={() =>
-                        scrollIntoViewHelper(secondaryCta, "Soluções")
-                      }
-                    >
-                      Confira nossas soluções
-                    </Button>
-                  </Box>
-                </div>
-              </HeroTextMainText>
-            </LandingHeroTextInnerContainer>
-          </LandingHeroTextContainer>
-        </LandingHeroGridContainer>
-      </LandingBackgroundHero>
-    </div>
+            <HeroMobileButtonsContainer>
+              <Box color="#fff">
+                <Button
+                  onClick={() => scrollHelper(ctaRef, "contato")}
+                  variant="contained"
+                  color="inherit"
+                  style={{ backgroundColor: "#29378E" }}
+                >
+                  Fale conosco
+                </Button>
+              </Box>
+
+              <Box pt={3} color="#fff">
+                <Button
+                  onClick={() => scrollHelper(ctaRefSecond, "servicos")}
+                  variant="contained"
+                  color="inherit"
+                  style={{ backgroundColor: "#6c79c7" }}
+                >
+                  Conheça nossas soluções
+                </Button>
+              </Box>
+            </HeroMobileButtonsContainer>
+          </HeroMobileInnerContainer>
+        </HeroBackGroundMobile>
+      )}
+    </React.Fragment>
   )
 }
 

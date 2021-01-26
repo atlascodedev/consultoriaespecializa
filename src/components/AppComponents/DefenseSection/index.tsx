@@ -1,7 +1,14 @@
 import React from "react"
 import DefenseCard from "../DefenseCard"
 import styled from "styled-components"
-import { Check, CreditCard, Facebook } from "@material-ui/icons"
+import {
+  AccountBalance,
+  Assessment,
+  Check,
+  CreditCard,
+  EmojiObjects,
+  Facebook,
+} from "@material-ui/icons"
 import { Fade, Slide, useMediaQuery } from "@material-ui/core"
 import { Waypoint } from "react-waypoint"
 
@@ -64,9 +71,11 @@ const DefenseSection = (props: Props) => {
           >
             <div>
               <DefenseCard
-                icon={CreditCard}
-                text={"Text through prop"}
-                title={"Preço"}
+                icon={Assessment}
+                text={
+                  "A Consultoria Especializa acredita em o que faz; empresas que trabalham junto com a Especializa obtém retornos claros e objetivos"
+                }
+                title={"Resultados"}
               />
             </div>
           </Slide>
@@ -77,9 +86,11 @@ const DefenseSection = (props: Props) => {
           >
             <div>
               <DefenseCard
-                icon={CreditCard}
-                text={"Text through prop"}
-                title={"Preço"}
+                icon={EmojiObjects}
+                text={
+                  "Através do trabalho realizado com diversas instituições educacionais, conseguimos analisar a situação por diversos ângulos e determinar o caminho certo para ajudar sua instituição atingir seus objetivos."
+                }
+                title={"Perspectiva"}
               />
             </div>
           </Slide>
@@ -90,9 +101,11 @@ const DefenseSection = (props: Props) => {
           >
             <div>
               <DefenseCard
-                icon={CreditCard}
-                text={"Text through prop"}
-                title={"Preço"}
+                icon={AccountBalance}
+                text={
+                  "A Consultoria Especializa auxiliará formar e/ou reforçar os alicerces da sua instituição, garantindo que seus funcionários e alunos consigam alcançar metas e obter sucesso duradouro."
+                }
+                title={"Estrutura"}
               />
             </div>
           </Slide>

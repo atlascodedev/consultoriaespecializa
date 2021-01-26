@@ -57,7 +57,7 @@ interface Props {
 const OffsetPictureCard = ({
   cardHeight = "428px",
   cardWidth = "802px",
-  cardColor = "#78E08F",
+  cardColor = "#8A95D3",
   imageUrl = `https://via.placeholder.com/${cardWidth}x${cardHeight}`,
 }: Props) => {
   return (

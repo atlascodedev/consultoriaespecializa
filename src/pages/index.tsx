@@ -4,13 +4,13 @@ import DefenseSection from "../components/AppComponents/DefenseSection"
 import LandingHero from "../components/AppComponents/LandingHero"
 import ServiceSection from "../components/AppComponents/ServiceSection"
 import TestimonialsSection from "../components/AppComponents/Testimonials"
-import ContactSection from "../components/AppComponents/ContactSection"
 
 import AppLayout from "../layout/AppLayout"
+import ContactSectionAlterative from "../components/AppComponents/ContactSectionAlternative"
 
 export type MenuItem = {
   menuName: string
-  reference: React.RefObject<HTMLElement>
+  reference: React.RefObject<HTMLElement> | null
 }
 
 interface IndexProps {
@@ -43,7 +43,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
   return (
     <AppLayout menu={menu}>
       <div ref={landingRef}>
-        <LandingHero ctaRef={contactRef} secondaryCta={serviceRef} />
+        <LandingHero ctaRef={contactRef} ctaRefSecond={serviceRef} />
       </div>
 
       <div>
@@ -54,7 +54,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
         <AboutUs />
       </div>
 
-      <div ref={serviceRef}>
+      <div id="servicos" ref={serviceRef}>
         <ServiceSection />
       </div>
 
@@ -62,8 +62,10 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
         <TestimonialsSection />
       </div>
 
-      <div ref={contactRef}>
-        <ContactSection />
+      <div id="contato" ref={contactRef}>
+        {/* <ContactSection /> */}
+
+        <ContactSectionAlterative />
       </div>
     </AppLayout>
   )
