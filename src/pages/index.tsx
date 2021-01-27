@@ -67,6 +67,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
 
         <ContactSectionAlterative sectionText="Contate-nos, ficaremos felizes em atendê-lo(a).  Nossa consulta é gratuita." />
       </div>
+
     </AppLayout>
   )
 }
