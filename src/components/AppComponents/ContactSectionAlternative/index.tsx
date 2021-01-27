@@ -5,10 +5,12 @@ import contactBg from "../../../images/contact-bg.png"
 import pattern from "../../../images/pattern-behind.svg"
 import { useMediaQuery } from "@material-ui/core"
 
-interface Props {}
+type ContactSectionBaseProps = {
+  color: string
+}
 
-const ContactSectionBase = styled.div`
-  background-color: #4c58a4;
+const ContactSectionBase = styled.div<ContactSectionBaseProps>`
+  background-color: ${props => props.color};
   overflow: hidden;
   padding-top: 5vh;
 `
@@ -19,8 +21,13 @@ const ContactSectionBaseInner = styled.div`
   position: relative;
 `
 
-const ContactSectionPictureContainer = styled.div`
-  height: 600px;
+type ContactSectionPictureContainerProps = {
+  height: string | number
+}
+
+const ContactSectionPictureContainer = styled.div<ContactSectionPictureContainerProps>`
+  height: ${props =>
+    typeof props.height == "number" ? props.height + "px" : props.height};
   width: fit-content;
   transform: rotateY(180deg);
   position: absolute;
@@ -55,6 +62,7 @@ const ContactSectionTextContainer = styled.div`
   padding-top: 5vh;
   margin-left: 20px;
   margin-right: 20px;
+  text-align: center;
 
   @media (min-width: 1024px) {
     font-size: 30px;
@@ -62,24 +70,34 @@ const ContactSectionTextContainer = styled.div`
   }
 `
 
-const ContactSectionAlterative = (props: Props) => {
+interface Props {
+  sectionText: string
+  image?: string
+  backgroundColor?: string
+  imageHeight?: string | number
+}
+
+const ContactSectionAlterative: React.FC<Props> = ({
+  sectionText = "Contate-nos, ficaremos felizes em atendê-lo(a).  Nossa consulta é gratuita.",
+  image = `${contactBg}`,
+  backgroundColor = "#4C58A4",
+  imageHeight = 600,
+}) => {
   const bigDevice = useMediaQuery("@media(min-width: 1024px)")
 
   return (
     <React.Fragment>
       {bigDevice ? (
-        <ContactSectionBase>
+        <ContactSectionBase color={backgroundColor}>
           <ContactSectionTextContainer>
-            {
-              "Contate-nos, ficaremos felizes em atendê-lo(a).  Nossa consulta é gratuita."
-            }
+            {sectionText}
           </ContactSectionTextContainer>
 
           <ContactSectionBaseInner>
             <ContactSectionPictureBehind src={pattern} />
 
-            <ContactSectionPictureContainer>
-              <ContactSectionPicture src={contactBg} />
+            <ContactSectionPictureContainer height={imageHeight}>
+              <ContactSectionPicture src={image} />
             </ContactSectionPictureContainer>
             <span></span>
 
@@ -87,11 +105,9 @@ const ContactSectionAlterative = (props: Props) => {
           </ContactSectionBaseInner>
         </ContactSectionBase>
       ) : (
-        <ContactSectionBase>
+        <ContactSectionBase color={backgroundColor}>
           <ContactSectionTextContainer>
-            {
-              "Contate-nos, ficaremos felizes em atendê-lo(a).  Nossa consulta é gratuita."
-            }
+            {sectionText}
           </ContactSectionTextContainer>
 
           <ContactFormMain />

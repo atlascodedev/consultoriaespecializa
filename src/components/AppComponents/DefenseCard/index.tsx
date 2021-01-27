@@ -6,7 +6,7 @@ import styled from "styled-components"
 
 const DefenseCardBase = styled("div")`
   background-color: #fff;
-  height: 200px;
+  height: 250px;
   width: 300px;
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -57,7 +57,7 @@ const DefenseCardTitle = styled("div")`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 25px;
   color: #333;
   font-family: "Suez One";
   padding-top: 5px;
@@ -76,15 +76,16 @@ const DefenseCardText = styled("div")`
   padding-right: 35px;
   padding-top: 10px;
   padding-bottom: 10px;
+  font-size: 12px;
 `
 
-interface DefenseCardProps {
-  icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>
+interface DefenseCard {
+  icon?: OverridableComponent<SvgIconTypeMap<{}, "svg">>
   title: string
   text: string
 }
 
-const DefenseCard: React.FC<DefenseCardProps> = ({
+const DefenseCard: React.FC<DefenseCard> = ({
   icon = Check,
   title = "Placeholder title",
   text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio enim consequuntur ad inventore! Sapiente accusamus reiciendis tempore assumenda labore. Nobis, illo eaque. Debitis itaque natus, quasi nam culpa iure libero.",
