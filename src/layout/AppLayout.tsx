@@ -12,6 +12,9 @@ type AppLayoutProps = {
 }
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children, menu }) => {
+  
+
+
   return (
     <React.Fragment>
       <Navbar menu={menu} logo={logo} />

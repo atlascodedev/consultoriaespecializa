@@ -4,10 +4,18 @@ import { Check, SvgIconComponent } from "@material-ui/icons"
 import React, { ReactElement } from "react"
 import styled from "styled-components"
 
-const DefenseCardBase = styled("div")`
+type DefenseCardBaseProps = {
+  height: string | React.ReactText
+  width: string | React.ReactText
+}
+
+const DefenseCardBase = styled("div")<DefenseCardBaseProps>`
   background-color: #fff;
-  height: 250px;
-  width: 300px;
+  height: ${props =>
+    typeof props.height == "number" ? props.height + "px" : props.height};
+  width: ${props =>
+    typeof props.width == "number" ? props.width + "px" : props.width};
+
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-top: 35px;
@@ -15,8 +23,10 @@ const DefenseCardBase = styled("div")`
   position: relative;
 
   @media (min-width: 1024px) {
-    height: 234px;
-    width: 345px;
+    height: ${props =>
+      typeof props.height == "number" ? props.height + "px" : props.height};
+    width: ${props =>
+      typeof props.width == "number" ? props.width + "px" : props.width};
   }
 `
 
@@ -33,8 +43,8 @@ const DefenseCardIconContainer = styled("div")`
   transform: translate(-15px, -15px);
 
   @media (min-width: 1024px) {
-    width: 91px;
-    height: 91px;
+    width: 61px;
+    height: 61px;
   }
 `
 
@@ -83,16 +93,20 @@ interface DefenseCard {
   icon?: OverridableComponent<SvgIconTypeMap<{}, "svg">>
   title: string
   text: string
+  cardHeight?: string | number
+  cardWidth?: string | number
 }
 
 const DefenseCard: React.FC<DefenseCard> = ({
   icon = Check,
   title = "Placeholder title",
   text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio enim consequuntur ad inventore! Sapiente accusamus reiciendis tempore assumenda labore. Nobis, illo eaque. Debitis itaque natus, quasi nam culpa iure libero.",
+  cardHeight = "250px",
+  cardWidth = "300px",
 }) => {
   return (
     <div>
-      <DefenseCardBase>
+      <DefenseCardBase width={cardWidth} height={cardHeight}>
         <DefenseCardIconContainer>
           <DefenseCardIcon>
             <SvgIcon fontSize="inherit" className={"icon"} component={icon} />

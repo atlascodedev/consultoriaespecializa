@@ -10,7 +10,7 @@
 }
 
 #swiper-1.swiper-container {
-  height: 600px;
+  height: auto;
 }
 
 @media (min-width: 1024px) {
@@ -20,6 +20,6 @@
   }
 
   #swiper-1.swiper-container {
-    height: 650px;
+    height: auto;
   }
 }

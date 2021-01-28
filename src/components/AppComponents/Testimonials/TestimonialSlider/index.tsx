@@ -10,6 +10,7 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from "swiper/react"
 import "./slider.css"
 import TestimonialCard from "../TestimonialCard"
+import { Testimonial } from ".."
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
@@ -19,14 +20,15 @@ interface CardActiveProps {
 
 const CardActiveContainer = styled("div")<CardActiveProps>`
   opacity: ${props => (props.active ? "1" : "0.2")};
-  /* scale: ${props => (props.active ? "1" : "0.75")}; */
-  transition: all 0.8s ease;
-  will-change: scale;
+  transition: all 1s ease-in-out;
+  will-change: opacity;
 `
 
-type Props = {}
+type Props = {
+  testimonials: Array<Testimonial>
+}
 
-const TestimonialSlider = ({}: Props) => {
+const TestimonialSlider = ({ testimonials = [] }: Props) => {
   return (
     <div>
       <Swiper
@@ -45,55 +47,22 @@ const TestimonialSlider = ({}: Props) => {
           },
         }}
       >
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <TestimonialCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <TestimonialCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <TestimonialCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <TestimonialCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <TestimonialCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <TestimonialCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <TestimonialCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
+        {testimonials.map((testimonial: Testimonial, index: number) => {
+          return (
+            <SwiperSlide key={index}>
+              {({ isActive }: any | boolean) => (
+                <CardActiveContainer active={isActive}>
+                  <TestimonialCard
+                    active={isActive}
+                    cardImage={testimonial.testimonialPicture}
+                    cardText={testimonial.testimonialText}
+                    cardTitle={testimonial.testimonialName}
+                  />
+                </CardActiveContainer>
+              )}
+            </SwiperSlide>
+          )
+        })}
       </Swiper>
     </div>
   )

@@ -237,6 +237,7 @@ const PostBenefitsMain: React.FC<PostBenefitsProps> = ({ benefits = [] }) => {
         <PostBenefitsInnerContainer>
           {benefits.map((benefit, index) => (
             <DefenseCard
+              cardHeight={"auto"}
               text={benefit.benefitDescription}
               title={benefit.benefitName}
             />

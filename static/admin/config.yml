@@ -66,3 +66,127 @@ collections:
               },
             ],
         }
+  # - name: "info"
+  #   editor:
+  #     preview: false
+  #   label: "Informações do website"
+  #   folder: "src/addons/info"
+  #   slug: "websiteInfoData"
+  #   create: true
+    # fields:
+    #   - {
+    #       label: "Content Type",
+    #       name: "contentType",
+    #       widget: "hidden",
+    #       default: "siteInfo",
+    #     }
+    #   - {
+    #       label: "Template Key",
+    #       name: "templateKey",
+    #       widget: "hidden",
+    #       default: "ignore",
+    #     }
+    #   - { label: "Endereço", name: "address", widget: "string" }
+    #   - { label: "Telefone 1", name: "phoneOne", widget: "string" }
+    #   - {
+    #       label: "Telefone 2",
+    #       name: "phoneTwo",
+    #       widget: "string",
+    #       required: false,
+    #       default: "",
+    #     }
+    #   - { label: "E-mail 1", name: "mailOne", widget: "string" }
+    #   - {
+    #       label: "Email 2",
+    #       name: "mailTwo",
+    #       widget: "string",
+    #       required: false,
+    #       default: "",
+    #     }
+    #   - {
+    #       label: "Facebook (link)",
+    #       name: "facebookUrl",
+    #       widget: "string",
+    #       required: false,
+    #       default: "#",
+    #     }
+    #   - {
+    #       label: "Instagram (link)",
+    #       name: "instagramUrl",
+    #       widget: "string",
+    #       default: "#",
+    #       required: false,
+    #     }
+    #   - {
+    #       label: "WhatsApp (número com DDD)",
+    #       name: "whatsAppNum",
+    #       widget: "number",
+    #       default: "#",
+    #       required: false,
+    #     }
+    #   - {
+    #       label: "Mensagem automática para contato via WhatsApp",
+    #       name: "whatsAppMessage",
+    #       widget: "string",
+    #       default: "",
+    #       required: false,
+    #     }
+  # - name: "frontPage"
+  #   editor:
+  #     preview: false
+  #   label: "Página principal"
+  #   folder: "src/addons/frontPage"
+  #   slug: "mainPageInfo"
+  #   create: true
+  #   fields:
+  #     - {
+  #         label: "Content Type",
+  #         name: "contentType",
+  #         widget: "hidden",
+  #         default: "frontInfo",
+  #       }
+  #     - {
+  #         label: "Template Key",
+  #         name: "templateKey",
+  #         widget: "hidden",
+  #         default: "ignore",
+  #       }
+  #     - { label: "Sobre nós", name: "aboutUs", widget: text, default: "" }
+  #     - { label: "Nossa missão", name: "ourMission", widget: text, default: "" }
+  - name: "testimonials"
+    editor:
+      preview: false
+    label: "Depoimentos"
+    folder: "/src/addons/testimonials"
+    slug: "testimonialsData"
+    create: true
+    fields:
+      - {
+          label: "Content Type",
+          name: "contentType",
+          widget: "hidden",
+          default: "testimonials",
+        }
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "ignore",
+        }
+      - {
+          label: "Foto do usuário que deu depoimento",
+          name: "testimonialPicture",
+          widget: "image",
+        }
+      - {
+          label: "Depoimento do usuário",
+          name: "testimonialText",
+          widget: text,
+          default: "",
+        }
+      - {
+          label: "Nome do depoente",
+          name: "testimonialName",
+          widget: string,
+          default: "",
+        }

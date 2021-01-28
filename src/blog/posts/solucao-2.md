@@ -6,17 +6,11 @@ featuredImage: /img/charles-deluvio-dziziyogahc-unsplash.jpg
 summary: "In convallis convallis enim ac consequat. Curabitur faucibus et lorem
   ut ullamcorper. Donec non venenatis ex, sit amet ornare mi. In purus enim,
   pellentesque a gravida eu, sodales ac lorem. Sed ultricies quam at arcu
-  molestie blandit. Sed congue diam vel nisi consectetur euismod. Nunc fringilla
-  tortor a tincidunt consequat. Proin posuere et nibh et ornare. Praesent
-  faucibus lectus sem, in finibus massa congue at. Fusce eu feugiat magna. Morbi
-  tempus elit non elit pretium, quis consectetur quam lacinia. Praesent
-  eleifend, nisl id consequat tristique, felis libero vulputate augue, nec
-  semper quam metus quis elit. Cras porttitor ipsum a magna sodales, sit amet
-  aliquet erat condimentum. Vestibulum a arcu lacus. Interdum et malesuada fames
-  ac ante ipsum primis in faucibus. "
+  molestie b. "
 benefits:
   - benefitName: Benefício Exemplo 1
-    benefitDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    benefitDescription:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Cras efficitur orci in nibh molestie, vitae pretium dolor condimentum.
       Etiam faucibus nibh a sapien vestibulum mollis. Donec a ex et sapien
       volutpat vestibulum. Fusce pharetra quis nulla nec cursus. Morbi eu neque
@@ -24,7 +18,8 @@ benefits:
       mi est viverra risus, ac ultrices mi lorem et augue. Morbi vitae luctus
       nunc. "
   - benefitName: Benefício exemplo 2
-    benefitDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    benefitDescription:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Cras efficitur orci in nibh molestie, vitae pretium dolor condimentum.
       Etiam faucibus nibh a sapien vestibulum mollis. Donec a ex et sapien
       volutpat vestibulum. Fusce pharetra quis nulla nec cursus. Morbi eu neque
@@ -32,11 +27,10 @@ benefits:
       mi est viverra risus, ac ultrices mi lorem et augue. Morbi vitae luctus
       nunc. "
 ---
+
 # Título nível 1
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur orci in nibh molestie, vitae pretium dolor condimentum. Etiam faucibus nibh a sapien vestibulum mollis. Donec a ex et sapien volutpat vestibulum. Fusce pharetra quis nulla nec cursus. Morbi eu neque eget odio egestas consectetur. Fusce dignissim, elit vitae dictum aliquet, mi est viverra risus, ac ultrices mi lorem et augue. Morbi vitae luctus nunc
-
-
 
 ## Subtítulo
 

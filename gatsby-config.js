@@ -40,6 +40,13 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        name: "addons",
+        path: `${__dirname}/src/addons`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         name: "uploads",
         path: `${__dirname}/src/images`,
       },

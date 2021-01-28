@@ -27,9 +27,9 @@ type SocialsInfo = {
 }
 
 type InfoSectionProps = {
-  address: AddressInfo
-  contact: ContactInfo
-  socials: SocialsInfo
+  address?: AddressInfo
+  contact?: ContactInfo
+  socials?: SocialsInfo
 }
 
 const InfoSectionBase = styled.div`

@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import TestimonialSlider from "./TestimonialSlider"
@@ -21,13 +22,61 @@ const TestimonialsTitle = styled("div")`
   /* margin-bottom: 100px; */
 `
 
-const TestimonialsSection = () => {
-  return (
-    <TestimonialsRoot>
-      <TestimonialsTitle>Depoimentos</TestimonialsTitle>
+type Props = {}
 
-      <TestimonialSlider />
-    </TestimonialsRoot>
+export type Testimonial = {
+  testimonialPicture: string
+  testimonialText: string
+  testimonialName: string
+}
+
+const TestimonialsSection: React.FC<Props> = () => {
+  const [testimonials, setTestimonials] = React.useState<Testimonial[]>([])
+
+  const data = useStaticQuery(graphql`
+    {
+      allMarkdownRemark(
+        filter: { frontmatter: { contentType: { eq: "testimonials" } } }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              testimonialPicture
+              testimonialText
+              testimonialName
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  React.useEffect(() => {
+    let testimonialsArrayLocal: Array<Testimonial> = []
+
+    data.allMarkdownRemark.edges.forEach((testimonialNode: any) => {
+      let testimonialLocal: Testimonial = {
+        testimonialPicture: testimonialNode.node.frontmatter.testimonialPicture,
+        testimonialText: testimonialNode.node.frontmatter.testimonialText,
+        testimonialName: testimonialNode.node.frontmatter.testimonialName,
+      }
+
+      testimonialsArrayLocal.push(testimonialLocal)
+    })
+
+    setTestimonials(testimonialsArrayLocal)
+  }, [])
+
+  return (
+    <div>
+      {testimonials.length > 0 ? (
+        <TestimonialsRoot>
+          <TestimonialsTitle>Depoimentos</TestimonialsTitle>
+
+          <TestimonialSlider testimonials={testimonials} />
+        </TestimonialsRoot>
+      ) : null}
+    </div>
   )
 }
 

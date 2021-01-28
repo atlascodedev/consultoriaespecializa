@@ -10,7 +10,9 @@
 }
 
 #swiper-2.swiper-container {
-  height: 500px;
+  height: auto;
+  padding-top: 15vh;
+  padding-bottom: 10vh;
 }
 
 @media (min-width: 1024px) {
@@ -20,6 +22,8 @@
   }
 
   #swiper-2.swiper-container {
-    height: 650px;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    height: auto;
   }
 }

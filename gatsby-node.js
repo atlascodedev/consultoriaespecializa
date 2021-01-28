@@ -28,6 +28,11 @@ exports.createSchemaCustomization = ({ actions }) => {
         whatsAppNum: String
         whatsAppMessage: String
         address: String
+        aboutUs: String
+        ourMission: String
+        testimonialPicture: String
+        testimonialText: String
+        testimonialName: String
     }
 
     type Fields {
