@@ -4,6 +4,7 @@ import Navbar from "../components/AppComponents/Navbar"
 import { MenuItem } from "../pages"
 import logo from "../images/logo.svg"
 import InfoSection from "../components/AppComponents/InfoSection"
+import { Address } from "cluster"
 
 type AppLayoutProps = {
   children: React.ReactNode

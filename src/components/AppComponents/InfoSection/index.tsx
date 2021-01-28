@@ -3,7 +3,7 @@ import { Facebook, Instagram, WhatsApp } from "@material-ui/icons"
 import React from "react"
 import styled from "styled-components"
 
-type Address = {
+type AddressInfo = {
   country: string
   city: string
   state: string
@@ -27,7 +27,7 @@ type SocialsInfo = {
 }
 
 type InfoSectionProps = {
-  address: Address
+  address: AddressInfo
   contact: ContactInfo
   socials: SocialsInfo
 }

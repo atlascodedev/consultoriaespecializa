@@ -10,6 +10,8 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from "swiper/react"
 import "./slider.css"
 import ServiceCard from "../ServiceCard"
+import { graphql, useStaticQuery } from "gatsby"
+import { ServiceBenefit } from "../../../../templates/Post"
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
@@ -24,9 +26,21 @@ const CardActiveContainer = styled("div")<CardActiveProps>`
   will-change: scale;
 `
 
-type Props = {}
+type Props = {
+  services: Array<ConsultingService>
+}
 
-const ServiceSlider = ({}: Props) => {
+export type ConsultingService = {
+  benefits: Array<ServiceBenefit>
+  featuredImage: string
+  summary: string
+  title: string
+  slug: string
+}
+
+const ServiceSlider = ({ services = [] }: Props) => {
+  const [serviceData, setServiceData] = React.useState([])
+
   return (
     <div>
       <Swiper
@@ -45,55 +59,20 @@ const ServiceSlider = ({}: Props) => {
           },
         }}
       >
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
+        {services.map((consultingService, index) => (
+          <SwiperSlide key={index}>
+            {({ isActive }: any | boolean) => (
+              <CardActiveContainer active={isActive}>
+                <ServiceCard
+                  serviceCardURL={consultingService.slug}
+                  serviceCardImg={consultingService.featuredImage}
+                  serviceCardText={consultingService.summary}
+                  serviceCardTitle={consultingService.title}
+                />
+              </CardActiveContainer>
+            )}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   )

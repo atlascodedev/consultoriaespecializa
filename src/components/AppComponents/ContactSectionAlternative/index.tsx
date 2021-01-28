@@ -23,6 +23,8 @@ const ContactSectionBaseInner = styled.div`
 
 type ContactSectionPictureContainerProps = {
   height: string | number
+  imagePosY: string
+  imagePosX: string
 }
 
 const ContactSectionPictureContainer = styled.div<ContactSectionPictureContainerProps>`
@@ -31,8 +33,8 @@ const ContactSectionPictureContainer = styled.div<ContactSectionPictureContainer
   width: fit-content;
   transform: rotateY(180deg);
   position: absolute;
-  bottom: 0;
-  left: 10%;
+  bottom: ${props => props.imagePosY};
+  left: ${props => props.imagePosX};
 
   @media (min-width: 1024px) {
   }
@@ -75,6 +77,8 @@ interface Props {
   image?: string
   backgroundColor?: string
   imageHeight?: string | number
+  imagePosX?: string
+  imagePosY?: string
 }
 
 const ContactSectionAlterative: React.FC<Props> = ({
@@ -82,6 +86,8 @@ const ContactSectionAlterative: React.FC<Props> = ({
   image = `${contactBg}`,
   backgroundColor = "#4C58A4",
   imageHeight = 600,
+  imagePosX = "10%",
+  imagePosY = "0",
 }) => {
   const bigDevice = useMediaQuery("@media(min-width: 1024px)")
 
@@ -96,7 +102,11 @@ const ContactSectionAlterative: React.FC<Props> = ({
           <ContactSectionBaseInner>
             <ContactSectionPictureBehind src={pattern} />
 
-            <ContactSectionPictureContainer height={imageHeight}>
+            <ContactSectionPictureContainer
+              imagePosX={imagePosX}
+              imagePosY={imagePosY}
+              height={imageHeight}
+            >
               <ContactSectionPicture src={image} />
             </ContactSectionPictureContainer>
             <span></span>

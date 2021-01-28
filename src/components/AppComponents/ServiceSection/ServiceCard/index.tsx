@@ -1,4 +1,5 @@
 import { Box, Button } from "@material-ui/core"
+import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { Url } from "url"
@@ -76,12 +77,14 @@ interface Props {
   serviceCardImg?: string
   serviceCardTitle?: string
   serviceCardText?: string
+  serviceCardURL?: string
 }
 
 const ServiceCard = ({
   serviceCardImg = "https://via.placeholder.com/350x350",
   serviceCardText = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque quis in quaerat magni sit voluptates ea explicabo animi, blanditiis vel cumque aliquid harum sed quas atque quod error impedit fugit nisi. Asperiores nostrum mollitia cum magni magnam, a sint voluptates quam nisi quidem fugiat aliquid suscipit corrupti, commodi aspernatur exercitationem ipsa  ",
   serviceCardTitle = "Lorem ipsum title",
+  serviceCardURL = "#",
 }: Props) => {
   return (
     <Box my={5}>
@@ -90,9 +93,11 @@ const ServiceCard = ({
         <ServiceCardBody>
           <ServiceCardTitle>{serviceCardTitle}</ServiceCardTitle>
           <ServiceCardText>{serviceCardText}</ServiceCardText>
-          <Button variant="contained" color="primary">
-            Conheça o serviço
-          </Button>
+          <Link to={serviceCardURL}>
+            <Button variant="contained" color="primary">
+              Conheça o serviço
+            </Button>
+          </Link>
         </ServiceCardBody>
       </ServiceCardBase>
     </Box>

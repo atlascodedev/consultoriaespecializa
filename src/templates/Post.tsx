@@ -210,13 +210,13 @@ const PostBenefitsInnerContainer = styled.div`
 
 const PostContactSection = styled.div``
 
-type PostBenefits = {
+export type ServiceBenefit = {
   benefitDescription: string
   benefitName: string
 }
 
 type PostBenefitsProps = {
-  benefits: Array<PostBenefits>
+  benefits: Array<ServiceBenefit>
 }
 
 const PostBenefitsMain: React.FC<PostBenefitsProps> = ({ benefits = [] }) => {
@@ -306,6 +306,7 @@ const Post: React.FC<any> = ({ pageContext }) => {
 
         <PostContactSection>
           <ContactSectionAlterative
+            imagePosX={"0%"}
             sectionText="Ficou com alguma dúvida ou não encontrou o que procurava? Ligue para nós, a Consultoria Especializa está preparada para adaptar-se aos desafios e ajudar sua instituição alcançar seus objetivos!"
             image={contactImg}
           />

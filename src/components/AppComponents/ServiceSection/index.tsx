@@ -1,9 +1,7 @@
 import React from "react"
 import ServiceCard from "./ServiceCard"
 import styled from "styled-components"
-import ServiceSlider from "./Slider"
-
-type Props = {}
+import ServiceSlider, { ConsultingService } from "./Slider"
 
 const ServiceSectionRoot = styled("div")`
   background-color: #f3f3f3;
@@ -23,14 +21,18 @@ const ServiceSectionTitle = styled("div")`
   font-weight: 600;
 `
 
-const ServiceSection = ({}: Props) => {
+type Props = {
+  services: Array<ConsultingService>
+}
+
+const ServiceSection = ({ services = [] }: Props) => {
   return (
     <ServiceSectionRoot>
       <ServiceSectionTitle>
         Conheça nossas soluções para sua instituição
       </ServiceSectionTitle>
 
-      <ServiceSlider />
+      <ServiceSlider services={services} />
     </ServiceSectionRoot>
   )
 }
